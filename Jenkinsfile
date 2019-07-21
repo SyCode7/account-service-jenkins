@@ -15,14 +15,12 @@ node {
         }
 
         stage('Image') {
-            dir ('account-service-jenkins') {
-                def app = docker.build "account-service-jenkins"
-             
-            }
+           sh 'docker build -t localhost:5000/account-service-jenkins .'
+           sh 'docker push -t localhost:5000/account-service-jenkins'
         }
 
         stage ('Run') {
-            docker.image("account-service-jenkins").run('-p 2222:2222 -h account --name account --link discovery')
+           sh 'docker run -p 2222:2222 -d localhost:5000/account-service-jenkins '
         }
 
            
