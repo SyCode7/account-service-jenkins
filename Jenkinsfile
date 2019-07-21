@@ -16,13 +16,13 @@ node {
 
         stage('Image') {
             dir ('account-service-jenkins') {
-                def app = docker.build "localhost:5000/account-service-jenkins:${env.version} ."
-                app.push()
+                def app = docker.build "account-service-jenkins"
+             
             }
         }
 
         stage ('Run') {
-            docker.image("localhost:5000/account-service-jenkins:${env.version}").run('-p 2222:2222 -h account --name account --link discovery')
+            docker.image("account-service-jenkins").run('-p 2222:2222 -h account --name account --link discovery')
         }
 
            
