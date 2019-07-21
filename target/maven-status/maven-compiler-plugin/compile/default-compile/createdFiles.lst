@@ -1,0 +1,5 @@
+pl\piomin\microservices\account\api\Api.class
+pl\piomin\microservices\account\Application.class
+pl\piomin\microservices\account\model\Account.class
+pl\piomin\microservices\account\AccountConfiguration.class
+pl\piomin\microservices\account\exceptions\AccountNotFoundException.class
