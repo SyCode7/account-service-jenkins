@@ -1,4 +1,3 @@
-using hostname.
 node {
 
     withMaven(maven:'maven') {
