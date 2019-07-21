@@ -6,7 +6,7 @@ node {
     withMaven(maven:'maven') {
 
         stage('Checkout') {
-            git url: 'https://github.com/piomin/sample-spring-microservices.git', credentialsId: 'github-piomin', branch: 'master'
+            git url: 'https://github.com/SyCode7/account-service-jenkins.git', credentialsId: 'sycide7 github creds', branch: 'master'
         }
 
         stage('Build') {
@@ -18,19 +18,17 @@ node {
         }
 
         stage('Image') {
-            dir ('account-service') {
-                def app = docker.build "localhost:5000/account-service:${env.version}"
+            dir ('account-service-jenkins') {
+                def app = docker.build "localhost:5000/account-service-jenkins:${env.version}"
                 app.push()
             }
         }
 
         stage ('Run') {
-            docker.image("localhost:5000/account-service:${env.version}").run('-p 2222:2222 -h account --name account --link discovery')
+            docker.image("localhost:5000/account-service-jenkins:${env.version}").run('-p 2222:2222 -h account --name account --link discovery')
         }
 
-        stage ('Final') {
-            build job: 'customer-service-pipeline', wait: false
-        }      
+           
 
     }
 
