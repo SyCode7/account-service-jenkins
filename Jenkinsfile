@@ -16,7 +16,7 @@ node {
 
         stage('Image') {
            sh 'docker build -t localhost:5000/account-service-jenkins .'
-           sh 'docker push -t localhost:5000/account-service-jenkins'
+           sh 'docker push localhost:5000/account-service-jenkins'
         }
 
         stage ('Run') {
