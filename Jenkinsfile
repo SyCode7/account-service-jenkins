@@ -20,7 +20,7 @@ node {
         }
 
         stage ('Run') {
-           sh 'docker run -p 2222:2222 -d localhost:5000/account-service-jenkins '
+           sh 'docker run -p 2222:2222 -d localhost:5000/account-service-jenkins'
         }
 
            
